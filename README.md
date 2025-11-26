@@ -3,8 +3,11 @@
 [![Stars](https://img.shields.io/github/stars/Razdolie/dev-rules.svg?label=Github%20%E2%98%85&a)](https://github.com/Razdolie/dev-rules/stargazers)
 [![Release](https://img.shields.io/github/v/release/Razdolie/dev-rules?include_prereleases&label=last%20release&style=badge)](https://github.com/Razdolie/dev-rules/releases/latest)
 [![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/4/810678201.json)](https://openyellow.org/grid?data=top&repo=810678201)
+[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 [ones-devguide.github.io/dev-rules](https://ones-devguide.github.io/dev-rules/)
+
+Наполнение страниц в процессе. Следите за обновлениями
 
 ## Описание
 
@@ -48,5 +51,15 @@
 - [Шаблоны новых объектов 1С для 1С:Бухгалтерия предприятия](https://github.com/Oxotka/TemplatesNewObject1C)
 - Курс "Чистый код на 1С" ([Желтый клуб](https://t.me/yellowclub_official))
 
----
-Наполнение страниц в процессе. Следите за обновлениями
+## Лицензия
+Этот проект распространяется под лицензией [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
+
+Вы можете:
+- Делиться — копировать и распространять материал на любом носителе и в любом формате.
+- Адаптировать — изменять, преобразовывать и брать за основу этот материал для любых целей, включая коммерческие.
+
+При следующих условиях:
+- Указание авторства — Вы должны указать авторство, предоставить ссылку на лицензию и указать, были ли внесены изменения.
+- На тех же условиях — Если вы изменяете, преобразуете или берёте за основу этот материал, вы должны распространять свои производные работы на условиях этой же лицензии.
+
+Полный текст лицензии: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
