@@ -103,7 +103,7 @@ const config = {
               },
               {
                 label: 'Telegram',
-                href: 't.me/ovmst',
+                href: 'https://t.me/ovmst',
               }
             ],
           },
