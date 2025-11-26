@@ -1,7 +1,7 @@
-# Гид по внутренним процессам и стандартам разработки
+# Гид по процессам и стандартам разработки
 
-[![Stars](https://img.shields.io/github/stars/Razdolie/dev-rules.svg?label=Github%20%E2%98%85&a)](https://github.com/Razdolie/dev-rules/stargazers)
-[![Release](https://img.shields.io/github/v/release/Razdolie/dev-rules?include_prereleases&label=last%20release&style=badge)](https://github.com/Razdolie/dev-rules/releases/latest)
+[![Stars](https://img.shields.io/github/stars/ones-devguide/dev-rules.svg?label=Github%20%E2%98%85&a)](https://github.com/ones-devguide/dev-rules/stargazers)
+[![Release](https://img.shields.io/github/v/release/ones-devguide/dev-rules?include_prereleases&label=last%20release&style=badge)](https://github.com/ones-devguide/dev-rules/releases/latest)
 [![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/4/810678201.json)](https://openyellow.org/grid?data=top&repo=810678201)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
