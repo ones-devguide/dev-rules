@@ -13,14 +13,14 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://razdolie.github.io/',
+  url: 'https://ones-devguide.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/dev-rules',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Razdolie', // Usually your GitHub org/user name.
+  organizationName: 'ones-devguide', // Usually your GitHub org/user name.
   projectName: 'dev-rules', // Usually your repo name.
   deploymentBranch: 'gh-pages',
 
@@ -46,7 +46,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/razdolie/dev-rules/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/ones-devguide/dev-rules/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: false,
         theme: {
@@ -80,11 +80,6 @@ const config = {
         },
       },
       navbar: {
-        logo: {
-          alt: 'Раздолье',
-          src: 'img/logo.svg',
-          width: '180px',
-        },
         items: [],
       },
       footer: {
@@ -94,12 +89,8 @@ const config = {
             title: 'Основное',
             items: [
               {
-                label: 'razdolie.ru',
-                href: 'https://razdolie.ru/',
-              },
-              {
                 label: 'GitHub',
-                href: 'https://github.com/razdolie/',
+                href: 'https://github.com/ones-devguide/',
               },
             ],
           },
@@ -108,29 +99,21 @@ const config = {
             items: [
               {
                 label: 'Infostart',
-                href: 'https://infostart.ru/profile/335686/',
+                href: 'https://infostart.ru/profile/350139/',
               },
               {
-                label: 'Youtube',
-                href: 'https://www.youtube.com/@vcrazdolie/featured',
-              },
-              {
-                label: 'VK',
-                href: 'https://vk.com/vcrazdolie',
-              },
+                label: 'Telegram',
+                href: 't.me/ovmst',
+              }
             ],
           },
           {
             title: 'Еще',
             items: [
-              {
-                label: 'Вакансии',
-                href: 'https://vk.cc/cxPWEC',
-              },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Razdolie`,
+        copyright: `Copyright © ${new Date().getFullYear()} Ochakovskii Vladimir`,
       },
       prism: {
         theme: prismThemes.github,

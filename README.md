@@ -4,11 +4,11 @@
 [![Release](https://img.shields.io/github/v/release/Razdolie/dev-rules?include_prereleases&label=last%20release&style=badge)](https://github.com/Razdolie/dev-rules/releases/latest)
 [![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/4/810678201.json)](https://openyellow.org/grid?data=top&repo=810678201)
 
-[razdolie.github.io/dev-rules](https://razdolie.github.io/dev-rules/)
+[ones-devguide.github.io/dev-rules](https://ones-devguide.github.io/dev-rules/)
 
 ## Описание
 
-Добро пожаловать в гид по внутренним процессам и стандартам разработки компании **Раздолье**!
+Добро пожаловать в гид по процессам и стандартам разработки!
 
 Этот репозиторий содержит регламент разработки и документацию для библиотеки проектных решений.
 
@@ -33,8 +33,8 @@
 
 ## Содержание
 
-- [Регламент разработки](https://razdolie.github.io/dev-rules/regulations)
-- [Библиотека проектных решений](https://razdolie.github.io/dev-rules/psl)
+- [Регламент разработки](https://ones-devguide.github.io/dev-rules/regulations)
+- [Библиотека проектных решений](https://ones-devguide.github.io/dev-rules/psl)
 
 ## Вклад
 Мы приветствуем ваш вклад в развитие этого проекта. Если у вас есть предложения или исправления, пожалуйста, создайте **pull request** или откройте **issue**.
