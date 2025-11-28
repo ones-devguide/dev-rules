@@ -80,6 +80,11 @@ const config = {
         },
       },
       navbar: {
+        logo: {
+          alt: 'ones-devguide',
+          src: 'img/logo.svg',
+          width: '180px',
+        },
         items: [],
       },
       footer: {
