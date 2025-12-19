@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-theory/sql" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.4.0">
+<title data-rh="true">SQL | Гид по процессам и стандартам разработки</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ones-devguide.github.io/dev-rules/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ones-devguide.github.io/dev-rules/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ones-devguide.github.io/dev-rules/theory/sql"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="SQL | Гид по процессам и стандартам разработки"><meta data-rh="true" name="description" content="Основные компоненты"><meta data-rh="true" property="og:description" content="Основные компоненты"><link data-rh="true" rel="icon" href="/dev-rules/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ones-devguide.github.io/dev-rules/theory/sql"><link data-rh="true" rel="alternate" href="https://ones-devguide.github.io/dev-rules/theory/sql" hreflang="en"><link data-rh="true" rel="alternate" href="https://ones-devguide.github.io/dev-rules/theory/sql" hreflang="x-default"><link rel="stylesheet" href="/dev-rules/assets/css/styles.872f4a6c.css">
+<script src="/dev-rules/assets/js/runtime~main.12401f77.js" defer="defer"></script>
+<script src="/dev-rules/assets/js/main.9f00b098.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><a class="navbar__brand" href="/dev-rules/"><div class="navbar__logo"><img src="/dev-rules/img/logo.svg" alt="ones-devguide" class="themedComponent_mlkZ themedComponent--light_NVdE" width="180px"><img src="/dev-rules/img/logo.svg" alt="ones-devguide" class="themedComponent_mlkZ themedComponent--dark_xIcU" width="180px"></div></a></div><div class="navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z"><input placeholder="Search" aria-label="Search" class="navbar__search-input"><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/dev-rules/regulations">Регламент разработки</a><button aria-label="Expand sidebar category &#x27;Регламент разработки&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/dev-rules/psl">Библиотека проектных решений</a><button aria-label="Expand sidebar category &#x27;Библиотека проектных решений&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" href="/dev-rules/master-class">Мастер-классы</a><button aria-label="Expand sidebar category &#x27;Мастер-классы&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/dev-rules/theory">Теория</a><button aria-label="Collapse sidebar category &#x27;Теория&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/dev-rules/theory/client_server">Клиент-серверное взаимодействие</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/dev-rules/theory/forms">Управляемые формы</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/dev-rules/theory/transaction">Транзакции</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/dev-rules/theory/index_types">Индексы</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/dev-rules/theory/residue_control">Контроль остатков</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/dev-rules/theory/data_blocking">Блокировки</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/dev-rules/theory/request">Запросы</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/dev-rules/theory/skd">СКД</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/dev-rules/theory/rls">RLS</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/dev-rules/theory/sql">SQL</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/dev-rules/theory/broker_esb">Брокеры и ESB</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/dev-rules/theory/conversion">Конвертация данных</a></li></ul></li></ul></nav><button type="button" title="Collapse sidebar" aria-label="Collapse sidebar" class="button button--secondary button--outline collapseSidebarButton_PEFL"><svg width="20" height="20" aria-hidden="true" class="collapseSidebarButtonIcon_kv0_"><g fill="#7a7a7a"><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"></path><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"></path></g></svg></button></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/dev-rules/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/dev-rules/theory"><span itemprop="name">Теория</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">SQL</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>SQL</h1></header><p>Основные компоненты</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="tempdb">tempDB<a class="hash-link" aria-label="Direct link to tempDB" title="Direct link to tempDB" href="/dev-rules/theory/sql#tempdb">​</a></h2>
+<p><strong>Суть:</strong></p>
+<ul>
+<li>Системная БД SQL Server для временных объектов (таблиц, данных запросов).</li>
+<li>Пересоздаётся при каждом перезапуске SQL Server.</li>
+<li>Автоматически растёт порциями по 10%, если не заданы ручные настройки.</li>
+<li>Используется 1С для временных таблиц и SQL Server для операций <code>GROUP BY</code>, <code>UNION</code> и т.д.</li>
+</ul>
+<p><strong>Проблема:</strong><br>
+<!-- -->Разрастание TEMPDB, ведущее к нехватке места на диске.</p>
+<p><strong>Причины:</strong></p>
+<ol>
+<li><strong>Долгие транзакции</strong>, блокирующие очистку.</li>
+<li><strong>Обрывы сетевых подключений</strong> (например, зависшие сессии 1С), из-за которых SQL Server не завершает  транзакции.</li>
+<li><strong>Недостаток места</strong> → SQL Server увеличивает TEMPDB, но не может освободить его из-за активных транзакций.</li>
+</ol>
+<p><strong>Решения для уменьшения размера:</strong></p>
+<ol>
+<li><strong>Перезапуск SQL Server</strong> – TEMPDB сбросится к исходному размеру.</li>
+<li><strong>Команда <code>DBCC SHRINKDATABASE(TEMPDB)</code></strong> – сжатие всей БД.</li>
+<li><strong>Команда <code>DBCC SHRINKFILE</code></strong> – сжатие отдельных файлов данных и журнала.</li>
+</ol>
+<p><strong>Рекомендации:</strong></p>
+<ul>
+<li>Выполнять сжатие в период минимальной активности.</li>
+<li>Требуются права администратора.</li>
+<li>Подробности – в документ ации Microsoft SQL Server.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="регламентные-операции">Регламентные операции<a class="hash-link" aria-label="Direct link to Регламентные операции" title="Direct link to Регламентные операции" href="/dev-rules/theory/sql#регламентные-операции">​</a></h2>
+<p><strong>1. Обновление статистики</strong></p>
+<ul>
+<li><strong>Зачем:</strong> SQL Server строит <strong>план выполнения запроса</strong> на основе статистики о распределении данных в таблицах и индексах.</li>
+<li><strong>Проблема:</strong> Устаревшая статистика приводит к выбору <strong>неоптимальных планов</strong> (например, сканирование вместо поиска по индексу), что резко снижает скорость запросов.</li>
+<li><strong>Как помогает:</strong> Регулярное обновление с <code>FULLSCAN</code> даёт оптимизатору точную картину данных, позволяя строить <strong>наиболее быстрые планы</strong>. Без блокировок, можно выполнять часто (рекомендуется не реже раза в день).</li>
+</ul>
+<p><strong>Что хранит статистика:</strong></p>
+<ol>
+<li><strong>Количество строк в таблице</strong> — сколько всего записей</li>
+<li><strong>Количество страниц данных</strong> — сколько места занимает таблица</li>
+<li><strong>Плотность данных</strong> — процент уникальных значений в столбце</li>
+<li><strong>Гистограмма (до 200 корзин)</strong> — распределение значений:<!-- -->
+<ul>
+<li>Диапазон значений в каждой корзине</li>
+<li>Количество строк в каждой корзине</li>
+<li>Частота встречаемости каждого значения</li>
+</ul>
+</li>
+<li><strong>Средняя длина данных</strong> — средний размер значений в байтах</li>
+<li><strong>Максимальное/минимальное значение</strong> — границы данных</li>
+<li><strong>Информация о связях</strong> — для составных индексов (корреляция между полями)</li>
+</ol>
+<p><strong>Как SQL использует статистику:</strong></p>
+<p><strong>1. Для оценки объёма данных:</strong></p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">WHERE РегистрСведений.Цены.Номенклатура = &#x27;Товар123&#x27;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>→ Смотрит: всего уникальных номенклатур 10 000, всего строк 1 000 000
+→ Оценка: 1 000 000 / 10 000 = <strong>~100 строк</strong></p>
+<p><strong>2. Для выбора метода доступа:</strong></p>
+<ul>
+<li><strong>&lt; 1% строк</strong> → Index Seek (точечный поиск)</li>
+<li><strong>&gt; 30% строк</strong> → Index Scan или Table Scan (перебор)</li>
+</ul>
+<p><strong>3. Для выбора типа соединения:</strong></p>
+<ul>
+<li><strong>Маленькая таблица × Большая таблица</strong> → Nested Loops</li>
+<li><strong>Две большие таблицы</strong> → Hash Join или Merge Join</li>
+</ul>
+<p><strong>4. Для оценки сортировки:</strong></p>
+<ul>
+<li><strong>Мало данных</strong> → сортировка в памяти</li>
+<li><strong>Много данных</strong> → сортировка с записью в tempdb</li>
+</ul>
+<p><strong>5. Для выбора индекса:</strong></p>
+<ul>
+<li>Какой индекс покрывает больше условий WHERE</li>
+<li>Какой индекс имеет лучшую селективность</li>
+</ul>
+<hr>
+<p><strong>2. Очистка процедурного кэша</strong></p>
+<ul>
+<li><strong>Зачем:</strong> SQL Server кэширует планы запросов для ускорения повторных выполнений.</li>
+<li><strong>Проблема:</strong> После обновления статистики в кэше могут остаться <strong>старые, неоптимальные планы</strong>, которые будут использоваться вместо новых.</li>
+<li><strong>Как помогает:</strong> Очистка кэша (<code>DBCC FREEPROCCACHE</code>) <strong>принудительно заставляет SQL Server перестроить планы</strong> с учётом свежей статистики. Выполняется сразу после её обновления.</li>
+</ul>
+<p><strong>3. Дефрагментация индексов</strong></p>
+<ul>
+<li><strong>Зачем:</strong> При интенсивной работе данные на диске фрагментируются (разбрасываются).</li>
+<li><strong>Проблема:</strong> Фрагментация заставляет диск совершать <strong>лишние операции чтения (I/O)</strong>, замедляя запросы, особенно диапазонные.</li>
+<li><strong>Как помогает:</strong> Упорядочивает физическое хранение данных, <strong>снижая нагрузку на диск</strong> и ускоряя работу индексов. Можно выполнять часто, без длительных блокировок.</li>
+</ul>
+<p><strong>4. Реиндексация таблиц</strong></p>
+<ul>
+<li><strong>Зачем:</strong> Полное перестроение индексов &quot;с нуля&quot;.</li>
+<li><strong>Проблема:</strong> Со временем индексы теряют эффективность из-за высокой фрагментации или большого количества удалений.</li>
+<li><strong>Как помогает:</strong> <strong>Максимально оптимизирует структуру индексов</strong>, что даёт наибольший прирост производительности для тяжёлых запросов. <strong>Блокирует таблицы</strong>, поэтому выполняется в период простоя.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="планы-запросов">Планы запросов<a class="hash-link" aria-label="Direct link to Планы запросов" title="Direct link to Планы запросов" href="/dev-rules/theory/sql#планы-запросов">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="что-такое-план-запроса-и-зачем-он-нужен">Что такое план запроса и зачем он нужен?<a class="hash-link" aria-label="Direct link to Что такое план запроса и зачем он нужен?" title="Direct link to Что такое план запроса и зачем он нужен?" href="/dev-rules/theory/sql#что-такое-план-запроса-и-зачем-он-нужен">​</a></h3>
+<p><strong>План запроса</strong> — это <strong>пошаговая инструкция от СУБД</strong>, показывающая конкретные алгоритмы выполнения SQL-запроса. Это &quot;отладчик&quot; для SQL-кода, который показывает реальную работу СУБД изнутри.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="зачем-анализировать-планы">Зачем анализировать планы?<a class="hash-link" aria-label="Direct link to Зачем анализировать планы?" title="Direct link to Зачем анализировать планы?" href="/dev-rules/theory/sql#зачем-анализировать-планы">​</a></h3>
+<ul>
+<li><strong>Понимать реальную производительность</strong> (не только на тестовых данных)</li>
+<li><strong>Находить узкие места</strong> — операции, которые &quot;съедают&quot; время</li>
+<li><strong>Предотвращать проблемы</strong> в боевой системе при росте данных</li>
+<li><strong>Оптимизировать запросы</strong> на основе реального поведения СУБД</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="ключевые-концепции-и-операторы">Ключевые концепции и операторы<a class="hash-link" aria-label="Direct link to Ключевые концепции и операторы" title="Direct link to Ключевые концепции и операторы" href="/dev-rules/theory/sql#ключевые-концепции-и-операторы">​</a></h2>
+<p><strong>Базовые алгоритмы СУБД</strong>
+СУБД использует понятные алгоритмы, знакомые программистам:</p>
+<p><strong>1. Доступ к данным:</strong></p>
+<ul>
+<li>
+<p><strong><code>Scan</code> (Сканирование)</strong> — полный перебор всех записей</p>
+<ul>
+<li><strong>Table Scan/Sequential Scan</strong> — перебор всей таблицы</li>
+<li><strong>Index Scan</strong> — перебор индекса + обращение к таблице</li>
+<li><strong>Index Only Scan</strong> (PostgreSQL) — поиск только по индексу</li>
+</ul>
+</li>
+<li>
+<p><strong><code>Seek</code> (Поиск по индексу)</strong> — быстрый доступ через &quot;оглавление&quot;</p>
+</li>
+</ul>
+<p><strong>2. Соединения (Joins):</strong></p>
+<ul>
+<li><strong><code>Nested Loops</code></strong> — вложенные циклы. Хорош, когда одна таблица маленькая</li>
+<li><strong><code>Hash Join</code></strong> — использует хеш-таблицу. Быстр для больших наборов</li>
+<li><strong><code>Merge Join</code></strong> — слияние отсортированных данных (самый быстрый для больших данных)</li>
+</ul>
+<p><strong>3. Другие операторы:</strong></p>
+<ul>
+<li><strong><code>Sort</code></strong> — сортировка (дорогая операция)</li>
+<li><strong><code>Filter</code></strong> — фильтрация данных</li>
+<li><strong><code>Aggregate</code></strong> — группировка и агрегация (SUM, COUNT, AVG)</li>
+<li><strong><code>Key Lookup</code></strong> (MS SQL) — поиск недостающих данных после индекса</li>
+</ul>
+<p><strong>Структура плана</strong>
+План — это <strong>цепочка операторов</strong>, где каждый:</p>
+<ul>
+<li>Получает данные от предыдущего</li>
+<li>Выполняет свою операцию</li>
+<li>Передаёт результат дальше</li>
+</ul>
+<p><strong>Данные движутся снизу вверх/справа налево:</strong></p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Источники данных → Фильтрация → Соединения → Сортировка → Результат</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="как-читать-и-анализировать-планы">Как читать и анализировать планы<a class="hash-link" aria-label="Direct link to Как читать и анализировать планы" title="Direct link to Как читать и анализировать планы" href="/dev-rules/theory/sql#как-читать-и-анализировать-планы">​</a></h2>
+<p><strong>Ключевые метрики:</strong></p>
+<p><strong>Для MS SQL Server:</strong></p>
+<ul>
+<li><strong>Стоимость (%)</strong> — относительная &quot;цена&quot; операции</li>
+<li><strong>Число строк</strong> — сколько строк обработано</li>
+<li><strong>Reads</strong> — количество чтений с диска</li>
+<li><strong>Duration</strong> — время выполнения</li>
+</ul>
+<p><strong>Для PostgreSQL:</strong></p>
+<ul>
+<li><strong>Стоимость</strong> <code>0.00..123.45</code>:<!-- -->
+<ul>
+<li>Первое число — получение первой строки</li>
+<li>Второе число — получение всех строк</li>
+<li><strong>Большая разница = проблема!</strong></li>
+</ul>
+</li>
+<li><strong>Actual rows vs Estimated rows</strong> — сравнение оценки и реальности</li>
+</ul>
+<p><strong>Алгоритм анализа:</strong></p>
+<ol>
+<li><strong>Найти самый &quot;дорогой&quot; оператор</strong> (самую высокую стоимость)</li>
+<li><strong>Проверить расхождения</strong> между оценкой и реальностью</li>
+<li><strong>Проанализировать вложенность</strong> (операторы внутри операторов)</li>
+<li><strong>Оценить количество обрабатываемых строк</strong></li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="инструменты-для-работы-с-планами">Инструменты для работы с планами<a class="hash-link" aria-label="Direct link to Инструменты для работы с планами" title="Direct link to Инструменты для работы с планами" href="/dev-rules/theory/sql#инструменты-для-работы-с-планами">​</a></h2>
+<p><strong>Для MS SQL Server:</strong></p>
+<ol>
+<li>
+<p><strong>SQL Server Profiler</strong></p>
+<ul>
+<li><strong>Что делает:</strong> Перехватывает запросы в реальном времени</li>
+<li><strong>Ключевые настройки:</strong>
+<ul>
+<li>События: <code>RPC:Completed</code>, <code>Showplan XML Statistics Profile</code></li>
+<li>Фильтры: по базе, длительности (&gt;1000 мс), ключевому слову</li>
+</ul>
+</li>
+<li><strong>Что смотреть:</strong> Duration, CPU, Reads, RowCount</li>
+</ul>
+</li>
+<li>
+<p><strong>SQL Sentry Plan Explorer</strong></p>
+<ul>
+<li>Визуализация сложных планов</li>
+<li><strong>Фильтр по % стоимости</strong> для поиска &quot;тяжёлых&quot; операций</li>
+</ul>
+</li>
+</ol>
+<p><strong>Для PostgreSQL:</strong></p>
+<ol>
+<li>
+<p><strong>Визуализаторы онлайн:</strong></p>
+<ul>
+<li><code>https://explain.depesz.com/</code> — дерево операторов</li>
+<li><code>https://tatiyants.com/pev/</code> — табличное представление + <strong>справка по операторам</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>Источники планов:</strong></p>
+<ul>
+<li>Технологический журнал 1С</li>
+<li>PgAdmin (через <code>EXPLAIN ANALYZE</code>)</li>
+</ul>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="типичные-проблемы-1с-и-их-признаки-в-планах">Типичные проблемы 1С и их признаки в планах<a class="hash-link" aria-label="Direct link to Типичные проблемы 1С и их признаки в планах" title="Direct link to Типичные проблемы 1С и их признаки в планах" href="/dev-rules/theory/sql#типичные-п роблемы-1с-и-их-признаки-в-планах">​</a></h2>
+<p><strong>1. Общий поиск (&quot;Поиск подобно&quot;)</strong></p>
+<ul>
+<li><strong>Признак:</strong> <code>LIKE &#x27;%значение%&#x27;</code> по нескольким полям</li>
+<li><strong>Проблема:</strong> Полное сканирование таблиц (Scan)</li>
+<li><strong>Решение:</strong> Отключить общий поиск в динамических списках</li>
+</ul>
+<p><strong>2. Сортировка по неиндексированным полям</strong></p>
+<ul>
+<li><strong>Признак:</strong> <code>ORDER BY</code> по полям без индекса или через точку</li>
+<li><strong>Проблема:</strong> Дорогая операция <code>Sort</code></li>
+<li><strong>Решение:</strong> Убрать сортировку или добавить индекс</li>
+</ul>
+<p><strong>3. Отсутствующие индексы</strong></p>
+<ul>
+<li><strong>Признак:</strong> <code>Key Lookup</code> (MS SQL) / <code>Index Scan</code> вместо <code>Index Only Scan</code></li>
+<li><strong>Проблема:</strong> Обращение к таблице после поиска по индексу</li>
+<li><strong>Решение:</strong> Добавить покрывающий индекс</li>
+</ul>
+<p><strong>4. Большие временные таблицы</strong></p>
+<ul>
+<li><strong>Признак:</strong> <code>RowsAffected</code> &gt; 100 000</li>
+<li><strong>Проблема:</strong> Перегрузка <code>tempdb</code>, нехватка памяти</li>
+<li><strong>Решение:</strong> Добавить отборы, оптимизировать алгоритм</li>
+</ul>
+<p><strong>5. Проблемы с &quot;Срезом последних&quot;</strong></p>
+<ul>
+<li><strong>Признак:</strong> Сложные вложенные запросы, много <code>loops</code></li>
+<li><strong>Проблема:</strong> 1С генерирует неоптимальные запросы</li>
+<li><strong>Решение:</strong>
+<ul>
+<li>Создать временную таблицу с измерениями</li>
+<li>Добавить индексы</li>
+<li>Упростить группировку</li>
+</ul>
+</li>
+</ul>
+<p><strong>6. Пропуск поля в составном индексе</strong></p>
+<ul>
+<li><strong>Пример:</strong> Индекс по <code>(Организация, Склад, Номенклатура)</code></li>
+<li><strong>Запрос:</strong> <code>WHERE Организация = ? AND Номенклатура = ?</code> (пропущен &quot;Склад&quot;)</li>
+<li><strong>Результат:</strong> Index Scan может быть МЕДЛЕННЕЕ Sequential Scan</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="процесс-анализа-на-боевой-базе">Процесс анализа на боевой базе<a class="hash-link" aria-label="Direct link to Процесс анализа на боевой базе" title="Direct link to Процесс анализа на боевой базе" href="/dev-rules/theory/sql#процесс-анализа-на-боевой-базе">​</a></h2>
+<p><strong>Этап 1: Поиск проблемных запросов</strong></p>
+<ol>
+<li>Настроить технологический журнал на захват &quot;долгих запросов&quot; (порог: 10-60 сек)</li>
+<li>Использовать мониторинг</li>
+<li>Сортировать по <code>Duration</code>, <code>RowsAffected</code></li>
+</ol>
+<p><strong>Этап 2: Предварительный анализ</strong></p>
+<ol>
+<li>По полю <code>Context</code> определить источник проблемы</li>
+<li>Изучить SQL-текст, найти антипаттерны:<!-- -->
+<ul>
+<li><code>LIKE &#x27;%...%&#x27;</code></li>
+<li><code>ORDER BY</code> по сложным полям</li>
+<li>Отсутствие отборов</li>
+</ul>
+</li>
+</ol>
+<p><strong>Этап 3: Глубокий анализ</strong></p>
+<ol>
+<li>Перехватить запрос через Profiler</li>
+<li>Получить план выполнения</li>
+<li>Проанализировать в Plan Explorer или визуализаторе</li>
+<li>Найти самый &quot;дорогой&quot; оператор</li>
+</ol>
+<p><strong>Этап 4: Оптимизация</strong></p>
+<ol>
+<li>Исправить антипаттерны в коде 1С</li>
+<li>Добавить недостающие индексы</li>
+<li>Переписать сложные запросы (особенно &quot;Срезы последних&quot;)</li>
+<li>Проверить актуальность статистики</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="критические-выводы-и-рекомендации">Критические выводы и рекомендации<a class="hash-link" aria-label="Direct link to Критические выводы и рекомендации" title="Direct link to Критические выводы и рекомендации" href="/dev-rules/theory/sql#критические-выводы-и-рекомендации">​</a></h2>
+<p><strong>Общие принципы:</strong></p>
+<ol>
+<li><strong>Не тестируйте на маленьких данных!</strong> Поведение на миллионах записей — совершенно другое</li>
+<li><strong>Статистика должна быть актуальной</strong> — основа правильных планов</li>
+<li><strong>План запроса — это просто</strong> — цепочка вызовов функций</li>
+</ol>
+<p><strong>Для разработчиков 1С:</strong></p>
+<ol>
+<li><strong>Избегайте антипаттернов</strong></li>
+<li><strong>Используйте отборы везде,  где возможно</strong></li>
+<li><strong>Следите за индексами:</strong>
+<ul>
+<li>Не пропускайте поля в составных индексах</li>
+<li>Используйте покрывающие индексы</li>
+</ul>
+</li>
+</ol>
+<p><strong>Для администраторов:</strong></p>
+<ol>
+<li>
+<p><strong>Регулярное обслуживание:</strong></p>
+<ul>
+<li>Обновление статистики (ежедневно)</li>
+<li>Очистка процедурного кэша (после обновления статистики)</li>
+<li>Дефрагментация индексов (еженедельно)</li>
+</ul>
+</li>
+<li>
+<p><strong>Мониторинг:</strong></p>
+<ul>
+<li>Размер <code>tempdb</code></li>
+<li>Долгие запросы</li>
+<li>Блокировкив</li>
+</ul>
+</li>
+</ol>
+<p><strong>80% проблем производительности решаются анализом планов без глубокого погружения в SQL.</strong></p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="материалы">Материалы<a class="hash-link" aria-label="Direct link to Материалы" title="Direct link to Материалы" href="/dev-rules/theory/sql#материалы">​</a></h2>
+<ul>
+<li>
+<p><a href="https://its.1c.ru/db/metod8dev#content:2374:hdoc" target="_blank" rel="noopener noreferrer">Работа с базой данных TEMPDB</a></p>
+</li>
+<li>
+<p><a href="https://its.1c.ru/db/metod8dev/content/5837/hdoc" target="_blank" rel="noopener noreferrer">Регламентные операции на уровне СУБД для MS SQL Server</a></p>
+</li>
+<li>
+<p><a href="https://infostart.ru/1c/articles/1492368/" target="_blank" rel="noopener noreferrer">Смотрим запросы 1С через Microsoft SQL Profiler по следам ошибок разработчиков, приводящих к проблемам производительности</a></p>
+</li>
+<li>
+<p><a href="https://infostart.ru/1c/articles/1196217/" target="_blank" rel="noopener noreferrer">Планы запросов - это просто!</a></p>
+</li>
+<li>
+<p><a href="https://infostart.ru/1c/articles/1196217/" target="_blank" rel="noopener noreferrer">Планы запросов - это просто! Разбор оптимизаций запросов PostgreSQL на живых примерах</a></p>
+</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/ones-devguide/dev-rules/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/theory/sql.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/dev-rules/theory/rls"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">RLS</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/dev-rules/theory/broker_esb"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Брокеры и ESB</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a class="table-of-contents__link toc-highlight" href="/dev-rules/theory/sql#tempdb">tempDB</a></li><li><a class="table-of-contents__link toc-highlight" href="/dev-rules/theory/sql#регламентные-операции">Регламентные операц ии</a></li><li><a class="table-of-contents__link toc-highlight" href="/dev-rules/theory/sql#планы-запросов">Планы запросов</a><ul><li><a class="table-of-contents__link toc-highlight" href="/dev-rules/theory/sql#что-такое-план-запроса-и-зачем-он-нужен">Что такое план запроса и зачем он нужен?</a></li><li><a class="table-of-contents__link toc-highlight" href="/dev-rules/theory/sql#зачем-анализировать-планы">Зачем анализировать планы?</a></li></ul></li><li><a class="table-of-contents__link toc-highlight" href="/dev-rules/theory/sql#ключевые-концепции-и-операторы">Ключевые концепции и операторы</a></li><li><a class="table-of-contents__link toc-highlight" href="/dev-rules/theory/sql#как-читать-и-анализировать-планы">Как читать и анализировать планы</a></li><li><a class="table-of-contents__link toc-highlight" href="/dev-rules/theory/sql#инструменты-для-работы-с-планами">Инструменты для работы с планами</a></li><li><a class="table-of-contents__link toc-highlight" href="/dev-rules/theory/sql#типичные-проблемы-1с-и-их-признаки-в-планах">Типичные проблемы 1С и их признаки в планах</a></li><li><a class="table-of-contents__link toc-highlight" href="/dev-rules/theory/sql#процесс-анализа-на-боевой-базе">Процесс анализа на боевой базе</a></li><li><a class="table-of-contents__link toc-highlight" href="/dev-rules/theory/sql#критические-выводы-и-рекомендации">Критические выводы и рекомендации</a></li><li><a class="table-of-contents__link toc-highlight" href="/dev-rules/theory/sql#материалы">Материалы</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Основное</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/ones-devguide/" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">Сообщество</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://infostart.ru/profile/350139/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Infostart<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://t.me/ovmst" target="_blank" rel="noopener noreferrer" class="footer__link-item">Telegram<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">Еще</div><ul class="footer__items clean-list"></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Ochakovskii Vladimir</div></div></div></footer></div>
+</body>
+</html>
