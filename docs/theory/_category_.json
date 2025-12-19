@@ -1,0 +1,9 @@
+{
+  "label": "Теория",
+  "position": 4,
+  "link": {
+    "slug": "theory",
+    "type": "generated-index",
+    "description": "Освежите в памяти основы или подготовьтесь к техническому интервью"
+  }
+}

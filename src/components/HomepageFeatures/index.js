@@ -34,11 +34,21 @@ const FeatureList = [
       </>
     ),
   },
+  {
+    title: 'Теория',
+    link: "theory",
+    icon: "🧠",
+    description: (
+      <>
+        Освежите в памяти основы или подготовьтесь к техническому интервью
+      </>
+    ),
+  }
 ];
 
 function Feature({icon, title, link, description}) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx('col col--3')}>
       <div className="text--center">
       <span className={styles.icon}>{icon}</span>
       </div>
